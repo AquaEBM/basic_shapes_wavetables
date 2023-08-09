@@ -54,9 +54,9 @@ fn main() {
     let num_bins = 2048 as i32 / 2;
 
     for (range, step, func) in [
+        (1..2, 1, sine as fn(i32) -> Complex32),
         // all harmonics
-        (1..num_bins, 1, saw as fn(i32) -> Complex32),
-        (1..2, 1, sine),
+        (1..num_bins, 1, saw),
         // odd harmonics
         (1..num_bins, 2, square),
         (1..num_bins, 2, triangle)
