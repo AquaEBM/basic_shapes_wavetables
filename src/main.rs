@@ -3,7 +3,7 @@ use hound::{WavWriter, WavSpec, SampleFormat};
 use realfft::{num_complex::Complex32, RealFftPlanner};
 use std::io::BufWriter;
 
-// fourier series expressions of basic waveforms..
+// fourier series expansions of basic waveforms..
 
 fn saw(i: i32) -> Complex32 {
     Complex32::new(0., (-1f32).powi(i as i32) / (PI * i as f32))
@@ -24,7 +24,7 @@ fn triangle(i: i32) -> Complex32 {
 
 fn main() {
 
-    let path = env::args().nth(1).expect("please specifiy a file path");
+    let path = env::args().skip(1).next().expect("please specifiy a file path");
 
     let mut fft = RealFftPlanner::new();
     let c2r = fft.plan_fft_inverse(2048);
